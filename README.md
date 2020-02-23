@@ -1,7 +1,15 @@
 # LeetCode
 Solutions of prolems from LeetCode
 
-========
+回溯算法
+ # | Title | Difficulty |  pass |
+|---| ----- | ---------- | ----- |
+|46|[Permutations 全排列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|51|[N-Queens N皇后](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
+|39|[Combination Sum 组合总和](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
+|47|[Permutations2 全排列2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|40|[Combination Sum2 组合总和2](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
+
 
 | # | Title | Difficulty |  pass |
 |---| ----- | ---------- | ----- |
