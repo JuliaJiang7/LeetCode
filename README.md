@@ -10,6 +10,26 @@ Solutions of prolems from LeetCode
 |47|[Permutations2 全排列2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
 |40|[Combination Sum2 组合总和2](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
 
+动态规划问题
+# | Title | Difficulty |  pass |
+|---| ----- | ---------- | ----- |
+|322|[Coin Change 零钱兑换](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|300|[Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|1143|[Longest Common Subsequence 最长公共子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|72|[Edit Distance 编辑距离](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+|10|[Regular Expression Matching 正则表达式匹配](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+|62|[Unique Paths 不同路径](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|63|[Unique Paths2 不同路径2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|28|[Implement strStr() 实现strStr()](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+
+二分查找
+# | Title | Difficulty |  pass |
+|---| ----- | ---------- | ----- |
+|35|[Search Insert Position 搜索插入位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|34|[Find First and Last Position of Element in Sorted Array 在排序数组中查找元素的第一个和最后一个位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|33|[Search in Rotated Sorted Array 搜索螺旋排序数组](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|300|[Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+
 
 | # | Title | Difficulty |  pass |
 |---| ----- | ---------- | ----- |
