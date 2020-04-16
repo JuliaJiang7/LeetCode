@@ -16,18 +16,18 @@ public class Solution46 {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
         Solution46 solution = new Solution46();
-        List<List<Integer>> list = solution.premute(nums);
+        List<List<Integer>> list = solution.permute(nums);
         System.out.println(list);
 
-        List<List<Integer>> list2 = solution.premute2(nums);
+        List<List<Integer>> list2 = solution.permute2(nums);
         System.out.println(list2);
     }
 
     /**
      * 第一种方法
      */
-    List<List<Integer>> res = new LinkedList<>();
-    List<List<Integer>> premute(int[] nums){
+    private List<List<Integer>> res = new LinkedList<>();
+    public List<List<Integer>> permute(int[] nums){
         //记录路径
         LinkedList<Integer> track = new LinkedList<>();
         backtrace(nums, track);
@@ -59,7 +59,7 @@ public class Solution46 {
      * 第二种方法
      */
     List<List<Integer>> res2 = new LinkedList<>();
-    public List<List<Integer>> premute2(int[] nums){
+    public List<List<Integer>> permute2(int[] nums){
         int len = nums.length;
         if(len == 0)    return res;
 

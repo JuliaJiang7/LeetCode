@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 
 /**
  * @author Julia Jiang
@@ -19,6 +19,10 @@ public class Test {
     void foo(String s) {
         s = "windows";
         System.out.println(s);
+        s.equals("");
+        s.compareTo("");
+        StringBuilder s1 = new StringBuilder();
+        StringBuffer s2 = new StringBuffer();
     }
 
 
@@ -31,23 +35,16 @@ public class Test {
     }
 
 
-    public static void main(String[] args) {
-        Test test = new Test();
-        String str = "hello";
-        test.foo(str); // str 也没有被改变
-        System.out.println(str);
 
-        /*int a = 10;
-        System.out.println(a);
-        change(a);
-        System.out.println(a);
-
-        int[] b = {10, 20};
-        System.out.println(b[0]);
-        change2(b);
-        System.out.println(b[0]);*/
-        /*List<Integer> list = new ArrayList<>();
-        Test test = new Test();
-        test.listAdd(list);*/
+    public static String upcase(String s) {
+        return s.toUpperCase();
     }
+    public static void main(String[] args) {
+        String s = "abc";
+        System.out.println(s.indexOf("b"));
+        System.out.println(s.indexOf("d"));
+
+    }
+
+
 }

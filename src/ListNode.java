@@ -29,4 +29,26 @@ public class ListNode {
         }
         System.out.println();
     }
+
+    /**
+     * 输入 int 数组，返回链表
+     * @param array
+     * @return
+     */
+    public static ListNode arrayToLinkedList(int[] array){
+        ListNode dummyNode = new ListNode(0);
+        ListNode curr = dummyNode;
+        for(int i : array){
+            curr.next = new ListNode(i);
+            curr = curr.next;
+        }
+        curr.next = null;
+        return dummyNode.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode node = arrayToLinkedList(new int[]{1,2,3});
+        node.showList();
+    }
+
 }

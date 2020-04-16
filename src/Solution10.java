@@ -16,7 +16,7 @@ public class Solution10 {
         boolean[][] dp = new boolean[len1+1][len2+1];
         dp[0][0] = true;
         //base case: dp[0][..] 初始化，如果出现 * 则可以消去上一个字符，且 上上一个字符对应 dp 值为 true，则当前 dp 值为true
-        for(int j = 0; j < len2; j++){
+        for(int j = 1; j < len2; j++){
             if(p.charAt(j) == '*' && dp[0][j-1]){   //j-1
                 dp[0][j+1] = true;                  //j+1
             }
