@@ -1,4 +1,5 @@
-# LeetCode
+Add Two Numbers 两数相加](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) LeetCode
+
 Solutions of prolems from LeetCode
 
 ## 回溯算法
@@ -32,49 +33,54 @@ Solutions of prolems from LeetCode
 
 ## 二分查找
 
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|35|[Search Insert Position 搜索插入位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|34|[Find First and Last Position of Element in Sorted Array 在排序数组中查找元素的第一个和最后一个位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|33|[Search in Rotated Sorted Array 搜索螺旋排序数组](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|300|[Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  35  | [Search Insert Position 搜索插入位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  34  | [Find First and Last Position of Element in Sorted Array 在排序数组中查找元素的第一个和最后一个位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  33  | [Search in Rotated Sorted Array 搜索螺旋排序数组](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+| 300  | [Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
 
-栈
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|20|[Valid Parentheses 有效的括号](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|71|[Simplify Path 简化路径](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|94|[Binary Tree Inorder Traversal 二叉树中序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
+## 栈
 
-二叉树
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|94|[Binary Tree Inorder Traversal 二叉树中序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|144|[Binary Tree Preorder Traversal 二叉树先序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|145|[Binary Tree Postorder Traversal 二叉树后序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|102|[Binary Tree Level Order Traversal 二叉树层次遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|107|[Binary Tree Level Order Traversal2 二叉树层次遍历2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|104|[Maximum Depth of Binary Tree 二叉树的最大深度](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|100|[Same Tree 相同的树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|101|[Symmetric Tree 对称二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|103|[ Binary Tree Zigzag Level Order Traversal 二叉树的锯齿形层次遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|105|[Construct Binary Tree from Preorder and Inorder Traversal 从前序与中序遍历序列构造二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|106|[Construct Binary Tree from Inorder and Postorder Traversal 从中序与后序遍历序列构造二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|98|[Validate Binary Search Tree 验证二叉搜索树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  20  | [Valid Parentheses 有效的括号](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  71  | [Simplify Path 简化路径](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  94  | [Binary Tree Inorder Traversal 二叉树中序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
 
-链表
-# | Title | Difficulty |  pass | remark |
-|---| ----- | ---------- | ----- | ------ |
-|2|[Add Two Numbers 两数相加](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|25|[Reverse Nodes in k-Group K 个一组翻转链表](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|61|[Rotate List 旋转链表](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|pass|
+## 二叉树
 
-贪心算法
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|45|[Jump Game II 跳跃游戏 II](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  94  | [Binary Tree Inorder Traversal 二叉树中序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+| 144  | [Binary Tree Preorder Traversal 二叉树先序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+| 145  | [Binary Tree Postorder Traversal 二叉树后序遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 102  | [Binary Tree Level Order Traversal 二叉树层次遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 107  | [Binary Tree Level Order Traversal2 二叉树层次遍历2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 104  | [Maximum Depth of Binary Tree 二叉树的最大深度](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 100  | [Same Tree 相同的树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 101  | [Symmetric Tree 对称二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 103  | [ Binary Tree Zigzag Level Order Traversal 二叉树的锯齿形层次遍历](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 105  | [Construct Binary Tree from Preorder and Inorder Traversal 从前序与中序遍历序列构造二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+| 106  | [Construct Binary Tree from Inorder and Postorder Traversal 从中序与后序遍历序列构造二叉树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+|  98  | [Validate Binary Search Tree 验证二叉搜索树](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
 
-找规律
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|48|[Rotate Image 旋转图像](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+## 链表
+
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  2   | [Add Two Numbers 两数相加](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  25  | [Reverse Nodes in k-Group K 个一组翻转链表](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  61  | [Rotate List 旋转链表](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+
+## 贪心算法
+
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  45  | [Jump Game II 跳跃游戏 II](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
+
+## 找规律
+
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  48  | [Rotate Image 旋转图像](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |        |
