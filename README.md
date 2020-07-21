@@ -1,32 +1,37 @@
 # LeetCode
 Solutions of prolems from LeetCode
 
-回溯算法
- # | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|46|[Permutations 全排列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|51|[N-Queens N皇后](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
-|39|[Combination Sum 组合总和](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
-|47|[Permutations2 全排列2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|40|[Combination Sum2 组合总和2](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium|100%|
+## 回溯算法
 
-动态规划问题
-# | Title | Difficulty |  pass |
-|---| ----- | ---------- | ----- |
-|322|[Coin Change 零钱兑换](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|300|[Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|1143|[Longest Common Subsequence 最长公共子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|72|[Edit Distance 编辑距离](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|10|[Regular Expression Matching 正则表达式匹配](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|44|[Wildcard Matching 通配符匹配](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|62|[Unique Paths 不同路径](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|63|[Unique Paths2 不同路径2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
-|28|[Implement strStr() 实现strStr()](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|42|[Trapping Rain Water 接雨水](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|32|[Longest Valid Parentheses 最长有效括号](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
-|53|[Maximum Subarray 最大子序和](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard|100%|
+|  #   | Title                                                        | Difficulty | Remark |
+| :--: | ------------------------------------------------------------ | ---------- | ------ |
+|  46  | [Permutations 全排列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  51  | [N-Queens N皇后](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
+|  39  | [Combination Sum 组合总和](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
+|  47  | [Permutations2 全排列2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  40  | [Combination Sum2 组合总和2](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
 
-二分查找
+## 动态规划问题
+
+|  #   | Title                                                        | Difficulty | Remark        |
+| :--: | ------------------------------------------------------------ | ---------- | ------------- |
+| 322  | [Coin Change 零钱兑换](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |               |
+| 300  | [Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |               |
+| 1143 | [Longest Common Subsequence 最长公共子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |               |
+|  72  | [Edit Distance 编辑距离](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  10  | [Regular Expression Matching 正则表达式匹配](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  44  | [Wildcard Matching 通配符匹配](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  62  | [Unique Paths 不同路径](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |               |
+|  63  | [Unique Paths2 不同路径2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |               |
+|  28  | [Implement strStr() 实现strStr()](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  42  | [Trapping Rain Water 接雨水](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  32  | [Longest Valid Parentheses 最长有效括号](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  53  | [Maximum Subarray 最大子序和](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Hard       |               |
+|  64  | [Minimum Path Sum 最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/) | Medium     | Regular,Pass |
+|      |                                                              |            |               |
+
+## 二分查找
+
 # | Title | Difficulty |  pass |
 |---| ----- | ---------- | ----- |
 |35|[Search Insert Position 搜索插入位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium|100%|
