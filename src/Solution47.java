@@ -20,38 +20,45 @@ public class Solution47 {
     }
 
     List<List<Integer>> res = new LinkedList<>();
-
     public List<List<Integer>> permuteUnique(int[] nums){
         int len = nums.length;
-        if(len == 0)    return res;
+        if(len == 0){
+            return res;
+        }
 
-        Arrays.sort(nums);  //排序；相同的数字放在一起，重复的剪枝方便
+        // 排序；相同的数字放在一起，重复的剪枝方便
+        Arrays.sort(nums);
         LinkedList<Integer> track = new LinkedList<>();
         boolean[] used = new boolean[len];
-        backtrace(nums, track, used);
+        backtrack(nums, track, used);
         return res;
     }
 
-    void backtrace(int[] nums, LinkedList<Integer> track, boolean[] used){
+    private void backtrack(int[] nums, LinkedList<Integer> track, boolean[] used){
         int len = nums.length;
+        // 满足结束条件
         if(track.size() == len){
             res.add(new LinkedList<>(track));
             return;
         }
 
-        int pre = nums[0] - 1;   //不同于数组中所有数
+        // 初始化为数组中没有的数
+        int pre = nums[0] - 1;
         for(int i = 0; i < len; i++){
-            if(used[i] || pre == nums[i])
+            // 排除不合法选择
+            if(used[i] || pre == nums[i]){
                 continue;
-
+            }
+            // 做选择
             track.add(nums[i]);
             used[i] = true;
-
-            backtrace(nums, track, used);
-
+            // 进入下一层决策树
+            backtrack(nums, track, used);
+            // 撤销选择
             track.removeLast();
             used[i] = false;
-            pre = nums[i];   //记录刚被撤销的数字
+            // 记录刚被撤销的数字
+            pre = nums[i];
         }
     }
 }

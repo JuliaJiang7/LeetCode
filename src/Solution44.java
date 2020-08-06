@@ -7,8 +7,7 @@
 public class Solution44 {
 
     public boolean isMatch(String s, String p) {
-        if(s == null || p == null)
-            return false;
+        if(s == null || p == null){return false;}
         int len1 = s.length();
         int len2 = p.length();
 

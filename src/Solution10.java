@@ -5,8 +5,7 @@
  */
 public class Solution10 {
     public boolean isMatch(String s, String p){
-        if(s == null || p == null)
-            return false;
+        if(s == null || p == null){return false;}
         int len1 = s.length();
         int len2 = p.length();
 
@@ -17,8 +16,10 @@ public class Solution10 {
         dp[0][0] = true;
         //base case: dp[0][..] 初始化，如果出现 * 则可以消去上一个字符，且 上上一个字符对应 dp 值为 true，则当前 dp 值为true
         for(int j = 1; j < len2; j++){
-            if(p.charAt(j) == '*' && dp[0][j-1]){   //j-1
-                dp[0][j+1] = true;                  //j+1
+            //j-1
+            if(p.charAt(j) == '*' && dp[0][j-1]){
+                //j+1
+                dp[0][j+1] = true;
             }
         }
 

@@ -32,7 +32,7 @@ public class Solution72 {
         return dp[len1][len2];
     }
 
-    int min(int a, int b, int c){
+    private int min(int a, int b, int c){
         return Math.min(Math.min(a,b),c);
     }
 

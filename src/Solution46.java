@@ -28,12 +28,17 @@ public class Solution46 {
      */
     private List<List<Integer>> res = new LinkedList<>();
     public List<List<Integer>> permute(int[] nums){
-        //记录路径
+        // 记录路径
         LinkedList<Integer> track = new LinkedList<>();
         backtrace(nums, track);
         return res;
     }
 
+    /**
+     *
+     * @param nums
+     * @param track 记录路径
+     */
     void backtrace(int[] nums, LinkedList<Integer> track){
         //触发结束条件
         if(track.size() == nums.length){
@@ -61,15 +66,24 @@ public class Solution46 {
     List<List<Integer>> res2 = new LinkedList<>();
     public List<List<Integer>> permute2(int[] nums){
         int len = nums.length;
-        if(len == 0)    return res;
+        if(len == 0){
+            return res;
+        }
 
         LinkedList<Integer> track = new LinkedList<>();
+        // 标记数组
         boolean[] used = new boolean[len];
         backtrace2(nums, track, used);
         return res2;
     }
 
-    void backtrace2(int[] nums, LinkedList<Integer> track, boolean[] used){
+    /**
+     *
+     * @param nums
+     * @param track
+     * @param used 标记数组，used[i]=true时，表示已被选择
+     */
+    private void backtrace2(int[] nums, LinkedList<Integer> track, boolean[] used){
         int len = nums.length;
         if(track.size() == len){
             res2.add(new LinkedList<>(track));
@@ -77,8 +91,9 @@ public class Solution46 {
         }
 
         for(int i = 0; i < len; i++){
-            if(used[i])
+            if(used[i]){
                 continue;
+            }
 
             track.add(nums[i]);
             used[i] = true;

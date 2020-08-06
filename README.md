@@ -1,6 +1,6 @@
-Add Two Numbers 两数相加](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) LeetCode
+# LeetCode
 
-Solutions of prolems from LeetCode
+Solutions of prolems from [LeetCode](https://leetcode.com/problemset/all/)
 
 ## 回溯算法
 
@@ -10,7 +10,7 @@ Solutions of prolems from LeetCode
 |  51  | [N-Queens N皇后](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
 |  39  | [Combination Sum 组合总和](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
 |  47  | [Permutations2 全排列2](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
-|  40  | [Combination Sum2 组合总和2](https://github.com/Dod-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
+|  40  | [Combination Sum2 组合总和2](https://github.com/D  od-o/LeetCode/blob/master/1-10/2.Add_Two_Numbers.py) | Medium     |        |
 
 ## 动态规划问题
 
@@ -39,6 +39,7 @@ Solutions of prolems from LeetCode
 |  34  | [Find First and Last Position of Element in Sorted Array 在排序数组中查找元素的第一个和最后一个位置](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
 |  33  | [Search in Rotated Sorted Array 搜索螺旋排序数组](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
 | 300  | [Longest Increasing Subsequence 最长上升子序列](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     |        |
+|  74  | [Search a 2D Matrix 搜索二维矩阵](https://github.com/Dod-o/LeetCode/blob/master/1-10/1.Two_Sum.py) | Medium     | Regular,Pass |
 
 ## 栈
 

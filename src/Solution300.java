@@ -19,8 +19,9 @@ public class Solution300 {
 
         for(int i = 0; i < nums.length; i++){
             for(int j = 0; j < i; j++){
-                if(nums[j] < nums[i])
+                if(nums[j] < nums[i]){
                     dp[i] = Math.max(dp[i], dp[j]+1);
+                }
             }
         }
 
@@ -46,14 +47,15 @@ public class Solution300 {
      */
     public int lengthOfLIS2(int[] nums){
         int[] top = new int[nums.length];
-        //牌初始堆数定义为0
+        // 牌初始堆数定义为0
         int piles = 0;
         for(int i = 0; i < nums.length; i++){
-            //要处理的扑克牌
+            // 要处理的扑克牌
             int poker = nums[i];
 
-            /************ 二分查找：搜索左侧边界 ***************/
-            int left = 0, right = piles;    //piles 表示堆数，即就是数组的长度；如果写成 right = piles + 1, 当 nums=[0] 时返回 0， 正确结果是 1
+            //*********** 二分查找：搜索左侧边界 ***************/
+            // piles 表示堆数，即就是数组的长度；如果写成 right = piles + 1, 当 nums=[0] 时返回 0， 正确结果是 1
+            int left = 0, right = piles;
             while (left < right){
                 int mid = left + (right - left) / 2;
                 if(top[mid] == poker){
@@ -65,9 +67,11 @@ public class Solution300 {
                 }
             }
 
-            //牌比每一个都大，则新建一个堆
-            if(left == piles)   piles++;
-            //牌比每一个都小、或者找到合适位置，放入 top 数组即可
+            // 牌比每一个都大，则新建一个堆
+            if(left == piles){
+                piles++;
+            }
+            // 牌比每一个都小、或者找到合适位置，放入 top 数组即可
             top[left] = poker;
         }
         return piles;
