@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Julia Jiang
@@ -15,34 +12,35 @@ public class Solution144 {
         return res;
     }
 
-    public void helper(TreeNode root, List<Integer> res){
-        if(root != null){
-            res.add(root.val);
-            if(root.left != null){
-                helper(root.left, res);
-            }
-            if(root.right != null){
-                helper(root.right, res);
-            }
-        }
+    private void helper(TreeNode node, List<Integer> res){
+        if (node == null){return;}
+
+        res.add(node.val);
+        helper(node.left, res);
+        helper(node.right, res);
     }
 
     /**
-     * 队列（中序遍历是栈）
+     * 解法二：迭代
      * @param root
      * @return
      */
-    public List<Integer> preorderTraversal2(TreeNode root){
+    public List<Integer> preorderTraversal2(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        Deque<TreeNode> deque = new LinkedList<>();
-        TreeNode p = root;
-        while (p != null || !deque.isEmpty()){
-            while (p != null){
-                res.add(p.val);
-                deque.push(p);
-                p = p.left;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()){
+            // 节点不为空，就一直访问并压栈
+            while (curr != null){
+                res.add(curr.val);
+                stack.push(curr);
+                // 考虑左子树
+                curr = curr.left;
             }
-            p = deque.pop().right;
+            // 节点为空就出栈
+            curr = stack.poll();
+            // 考虑右子树
+            curr = curr.right;
         }
         return res;
     }

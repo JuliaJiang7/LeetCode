@@ -41,38 +41,6 @@ public class Test {
     }
 
 
-    List<List<Integer>> res = new LinkedList<>();
-    public List<List<Integer>> permute(int[] nums) {
-        // 记录路径（已做出的选择）
-        LinkedList<Integer> track = new LinkedList<>();
-        backtrack(nums, track);
-        return res;
-    }
-
-    /**
-     *
-     * @param nums
-     * @param track
-     */
-    private void backtrack(int[] nums, LinkedList<Integer> track){
-        // 满足结束条件（到达决策树底层，无法再做选择的条件）
-        if(nums.length == track.size()){
-            res.add(new LinkedList<>(track));
-            return;
-        }
-        for (int num : nums) {
-            // 排除不合法的选择
-            if(track.contains(num)){
-                continue;
-            }
-            // 做选择
-            track.add(num);
-            // 进入下一层决策树
-            backtrack(nums, track);
-            // 撤销选择
-            track.removeLast();
-        }
-    }
 
     public int maxSubArray(int[] nums) {
         int[] dp = new int[nums.length];
@@ -180,6 +148,73 @@ public class Test {
         return right;
     }
 
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new LinkedList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()){
+            while (curr != null){
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            res.add(curr.val);
+            curr = curr.right;
+        }
+        return res;
+    }
 
+    public List<Integer> postorderTraversal(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode curr = root;
+        // 记录上一个遍历的节点
+        TreeNode pre = null;
+        while (curr != null || !stack.isEmpty()){
+            while (curr != null){
+                stack.push(curr);
+                curr = curr.left;
+            }
+            // 获取当前根节点
+            TreeNode temp = stack.peek();
+            // 是否变到右子树
+            if(temp.right != null && temp.right != pre){
+                curr = temp.right;
+            }else{
+                res.add(temp.val);
+                // 记录上一个遍历的节点
+                pre = temp;
+                stack.pop();
+            }
+        }
+        return res;
+    }
+
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            // 当前层列表
+            List<Integer> level = new ArrayList<>();
+
+            // 当前队列中的元素个数，即就是当前层的节点数
+            int levelNum = queue.size();
+            // levelNum 必须在外面定义，因为 queue 的大小在不停的变化
+            for(int i = 0; i < levelNum; i++){
+                // 移除队列第一个元素
+                TreeNode node = queue.remove();
+                level.add(node.val);
+                if(node.left != null){queue.add(node.left);}
+                if(node.right != null){queue.add(node.right);}
+            }
+            res.add(level);
+        }
+        return res;
+    }
 
 }

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Julia Jiang
@@ -19,8 +17,8 @@ public class Solution94 {
         return res;
     }
 
-    public void helper(TreeNode root, List<Integer> res){
-        if (root == null) return;
+    private void helper(TreeNode root, List<Integer> res){
+        if (root == null){return;}
 
         helper(root.left, res);
         res.add(root.val);
@@ -36,18 +34,20 @@ public class Solution94 {
      */
     public List<Integer> inorderTraversal2(TreeNode root){
         List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        // 程序中尽量避免使用Stack类，太古老，性能差，使用ArrayDeque代替
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode curr = root;
-        while (curr != null || !stack.empty()){
-            //节点不为空就一直压栈
+        while (curr != null || !stack.isEmpty()){
+            // 节点不为空就一直压栈
             while (curr != null){
                 stack.push(curr);
-                curr = curr.left;   //考虑左子树
+                // 考虑左子树
+                curr = curr.left;
             }
-            //节点为空，就出栈
+            // 节点为空，就出栈
             curr = stack.pop();
             res.add(curr.val);
-            //考虑右子树
+            // 考虑右子树
             curr = curr.right;
         }
         return res;

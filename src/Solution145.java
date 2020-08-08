@@ -1,8 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Julia Jiang
@@ -10,32 +7,19 @@ import java.util.Stack;
  * @description 二叉树的后序遍历
  */
 public class Solution145 {
-    /**
-     * 解法一：递归
-     * @param root
-     * @return
-     */
+
     public List<Integer> postorderTraversal(TreeNode root){
         List<Integer> res = new ArrayList<>();
         helper(root, res);
         return res;
     }
 
-    /**
-     * 解法二
-     * @param root
-     * @param res
-     */
-    public void helper(TreeNode root, List<Integer> res){
-        if(root != null){
-            if(root.left != null){
-                helper(root.left, res);
-            }
-            if(root.right != null){
-                helper(root.right, res);
-            }
-            res.add(root.val);
-        }
+    private void helper(TreeNode node, List<Integer> res){
+        if (node == null){return;}
+
+        helper(node.left, res);
+        helper(node.right, res);
+        res.add(node.val);
     }
 
     public List<Integer> postorderTraversal2(TreeNode root){
@@ -76,26 +60,29 @@ public class Solution145 {
      * @return
      */
     public List<Integer> postorderTraversal3(TreeNode root){
-        List<Integer> list = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode curr = root;
-        TreeNode last = null;
+        // 记录上一个遍历的节点
+        TreeNode pre = null;
         while (curr != null || !stack.isEmpty()){
-            while(curr != null){
+            while (curr != null){
                 stack.push(curr);
                 curr = curr.left;
             }
+            // 获取当前根节点
             TreeNode temp = stack.peek();
-            //是否变到右子树: 判断右子树是否为空和是否是从右节点回到的根节点
-            if(temp.right != null && temp.right != last){
+            // 是否变到右子树
+            if(temp.right != null && temp.right != pre){
                 curr = temp.right;
             }else{
-                list.add(temp.val);
-                last = temp;
+                res.add(temp.val);
+                // 记录上一个遍历的节点
+                pre = temp;
                 stack.pop();
             }
         }
-        return list;
+        return res;
     }
 
 }

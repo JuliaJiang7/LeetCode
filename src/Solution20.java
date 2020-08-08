@@ -8,7 +8,7 @@ import java.util.Map;
  * @description 有效的括号（栈）
  */
 public class Solution20 {
-    //建立哈希表构建左右括号的关系，查询左右括号只需要 O(1) 复杂度
+    // 建立哈希表构建左右括号的关系，查询左右括号只需要 O(1) 复杂度
     private Map<Character, Character> map = new HashMap<Character, Character>(){{
         put('{', '}');
         put('[', ']');

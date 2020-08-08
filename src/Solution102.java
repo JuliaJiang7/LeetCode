@@ -9,58 +9,57 @@ import java.util.Queue;
  * @description 二叉树的层次遍历
  */
 public class Solution102 {
-    List<List<Integer>> levels = new ArrayList<>();
+
+
+    List<List<Integer>> res = new ArrayList<>();
 
     /**
-     * 递归
+     * 方法一
      * @param root
      * @return
      */
-    public List<List<Integer>> levelOrder(TreeNode root){
-        if(root == null)    return levels;
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        if(root == null){return res;}
         helper(root, 0);
-        return levels;
+        return res;
     }
 
-    public void helper(TreeNode root, int level){
-        if(levels.size() == level){
-            levels.add(new ArrayList<Integer>());
+    private void helper(TreeNode node, Integer level){
+        if(res.size() == level){
+            res.add(new ArrayList<>());
         }
-        levels.get(level).add(root.val);
-
-        if(root.left != null){
-            helper(root.left, level+1);
+        res.get(level).add(node.val);
+        if(node.left != null){
+            helper(node.left, level + 1);
         }
-        if(root.right != null){
-            helper(root.right, level+1);
+        if(node.right != null){
+            helper(node.right, level + 1);
         }
     }
 
-    /**
-     * 迭代
-     * @param root
-     * @return
-     */
-    public List<List<Integer>> levelOrder2(TreeNode root){
-        List<List<Integer>> levels = new ArrayList<>();
-        if(root == null)    return levels;
-
+    public List<List<Integer>> levelOrder2(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while(!queue.isEmpty()){
-            //当前层列表
-            List<Integer> currentLevel = new ArrayList<>();
+            // 当前层列表
+            List<Integer> level = new ArrayList<>();
 
-            int level_num = queue.size();   //队列中的元素个数，即就是当前层的节点数
-            for(int i = 0; i < level_num; i++){     //level_num 必须在外面定义，因为 queue 的大小在不停的变化
-                TreeNode node = queue.remove();     //移除队列第一个元素
-                currentLevel.add(node.val);
-                if(node.left != null)   queue.add(node.left);
-                if(node.right != null)  queue.add(node.right);
+            // 当前队列中的元素个数，即就是当前层的节点数
+            int levelNum = queue.size();
+            // levelNum 必须在外面定义，因为 queue 的大小在不停的变化
+            for(int i = 0; i < levelNum; i++){
+                // 移除队列第一个元素
+                TreeNode node = queue.remove();
+                level.add(node.val);
+                if(node.left != null){queue.add(node.left);}
+                if(node.right != null){queue.add(node.right);}
             }
-
-            levels.add(currentLevel);
+            res.add(level);
         }
-        return levels;
+        return res;
     }
 }
