@@ -17,6 +17,6 @@ public class Solution704 {
                 right = mid - 1;
             }
         }
-        return -1;
+        return left;
     }
 }

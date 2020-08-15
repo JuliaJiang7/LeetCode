@@ -217,4 +217,211 @@ public class Test {
         return res;
     }
 
+
+    public int trap(int[] height) {
+        int sum = 0;
+        int len = height.length;
+        if(len == 0){return 0;}
+
+        // max_left[i] = x 表示：height[0..i] 中最大值为x
+        int max_left[] = new int[len];
+        // max_right[i] = x 表示：height[i..(len-1)] 中最大值为x
+        int max_right[] = new int[len];
+
+        // base case
+        max_left[0] = height[0];
+        max_right[len - 1] = height[len - 1];
+
+        for(int i = 1; i < len; i++){
+            max_left[i] = Math.max(height[i], max_left[i - 1]);
+        }
+        for(int j = len - 2; j > 0; j--){
+            max_right[j] = Math.max(height[j], max_right[j + 1]);
+        }
+
+        for(int i = 1; i < len - 1; i++){
+            sum += Math.min(max_left[i], max_right[i]) - height[i];
+        }
+        return sum;
+    }
+
+
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] < target){
+                left = mid + 1;
+            }else if(nums[mid] > target){
+                right = mid - 1;
+            }else{
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
+
+    public int maxDepth(TreeNode root) {
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int level = 0;
+        while (!queue.isEmpty()){
+            level++;
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.remove();
+                if(node.left != null){queue.add(node.left);}
+                if(node.right != null){ queue.add(node.right);}
+            }
+        }
+        return level;
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null){
+            return true;
+        }else if(p != null && q != null && p.val == q.val){
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }else{
+            return false;
+        }
+    }
+
+    public int search(int[] nums, int target) {
+        int len = nums.length;
+        if(len == 0){return -1;}
+        int left = 0, right = len - 1;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] <  target){
+                if(nums[right] < target){
+                    right = mid - 1;
+                }else {
+                    left = mid + 1;
+                }
+            }else if(nums[mid] > target){
+                if(nums[left] <= target){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else{
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    public int search2(int[] nums, int target) {
+        int len = nums.length;
+        if(len == 0){return -1;}
+        int left = 0, right = len - 1;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+
+            // 左半段有序
+            if(nums[left] <= nums[mid]){
+                // target 在左半段
+                // 注意等号
+                if(nums[left] <= target && target < nums[mid]){
+                    right = mid - 1;
+                }else {
+                    left = mid + 1;
+                }
+            }else{
+                // target 在右半段
+                // 注意等号
+                if(nums[mid] < target && target <= nums[right]){
+                    left = mid + 1;
+                }else {
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private boolean isValid(String s){
+        Deque<Character> stack = new ArrayDeque<>();
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '('){
+                stack.push('(');
+            }else{
+                if(!stack.isEmpty() && stack.peek() == '('){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public int longestValidParentheses(String s) {
+        int len = s.length();
+        if(len == 0){return 0;}
+        int max = 0;
+        for(int i = 0; i < len; i++){
+            // 注意：substring 是左闭右开，所以这里j的取值小于等于len
+            for(int j = i + 2; j <= len; j += 2){
+                if(isValid(s.substring(i, j))){
+                    max = Math.max(max, j - i);
+                }
+            }
+        }
+        return max;
+    }
+
+    public int longestValidParentheses2(String s) {
+        int count = 0;
+        int max = 0;
+        for(int i = 0; i < s.length(); i++){
+            count = 0;
+            for(int j = i; j < s.length(); j++){
+                if(s.charAt(j) == '('){
+                    count++;
+                }else{
+                    count--;
+                }
+
+                if(count < 0){
+                    break;
+                }
+
+                if(count == 0){
+                    max = Math.max(max, j - i + 1);
+                }
+            }
+        }
+        return max;
+    }
+
+    public int longestValidParentheses3(String s) {
+        int len = s.length();
+        int max = 0;
+        // dp[i]=x 表示：以s[i]结尾的子串最长有效长度为x
+        int[] dp = new int[len];
+        for(int i = 1; i < len; i++){
+            // 如果遇到左括号，dp[i]=0，就是初始值
+            // 遇到右括号时，才会更新dp数组
+            if(s.charAt(i) == ')'){
+                // 右括号的前一位是左括号
+                if(s.charAt(i - 1) == '('){
+                    dp[i] = (i > 2 ? dp[i - 2] : 0) + 2;
+
+                // 右括号前一位是右括号
+                // 并且除去前边的合法序列的前一位是左括号
+                }else if(i - dp[i - 1] > 0 && s.charAt(i - dp[i - 1] - 1) == '('){
+                    dp[i] = dp[i - 1] + ((i - dp[i - 1]) > 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+                }
+                max = Math.max(max, dp[i]);
+            }
+        }
+        return max;
+    }
+
+
 }

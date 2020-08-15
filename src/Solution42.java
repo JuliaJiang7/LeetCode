@@ -8,6 +8,7 @@ import java.util.Stack;
 public class Solution42 {
     /**
      * 暴力解法
+     * 参考：https://leetcode.wang/leetCode-42-Trapping-Rain-Water.html
      * @param height
      * @return
      */
@@ -32,10 +33,6 @@ public class Solution42 {
             sum += Math.min(max_left, max_right) - height[i];
         }
         return sum;
-    }
-
-    public static void main(String[] args) {
-
     }
 
     /**

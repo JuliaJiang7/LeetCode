@@ -4,52 +4,72 @@
  * @description
  */
 public class Solution33 {
-    /**
-     * 二分查找
-     * @param nums 查找的数组
-     * @param key 查找目标
-     * @return 返回key的下标
-     */
-    private int binarySearch(int[] nums, int key){
-        int low, high, mid;
-        low = 0;
-        high = nums.length - 1;
-        while (low <= high){
-            mid = (low + high) / 2;
-            if(key == nums[mid])
+    public int search(int[] nums, int target) {
+        int len = nums.length;
+        if(len == 0){return -1;}
+        int left = 0, right = len - 1;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target){
                 return mid;
-            else if(key < nums[mid])
-                high = mid - 1;
-            else
-                low = mid + 1;
+            }
+
+            // 左半段有序
+            // 等于的情况出现在：left = mid 时，即left和mid重合，此时只剩下两个元素
+            // 这个等号不能去掉，因为mid求值时取整，两个元素时mid只会和left重合
+            // 如果去掉等号，计算right = mid - 1时，right会直接越界
+            if(nums[left] <= nums[mid]){
+                // target在左半段
+                if(nums[left] <= target && target < nums[mid]){
+                    right = mid - 1;
+                // target在右半段
+                }else {
+                    left = mid + 1;
+                }
+            // 右半段有序
+            }else{
+                // target 在右半段
+                if(nums[mid] < target && target <= nums[right]){
+                    left = mid + 1;
+                // target 在左半段
+                }else {
+                    right = mid - 1;
+                }
+            }
         }
         return -1;
     }
 
-    public int search(int[] nums, int target){
-        if(nums == null || nums.length == 0)
-            return -1;
-        int start = 0;
-        int end = nums.length - 1;
-        while (start <= end){
-            int mid = start + (start - end) / 2;  //这样写防止溢出
-            if(nums[mid] == target)
+    public int search2(int[] nums, int target) {
+        int len = nums.length;
+        if(len == 0){return -1;}
+        int left = 0, right = len - 1;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target){
                 return mid;
+            }
 
-            //后半部分有序
-            if(nums[mid] < nums[end]){
-                //target 在后半部分中
-                if(nums[mid] < target && nums[end] >= target){
-                    start = mid + 1;
-                }else{
-                    end = mid - 1;
+            // 左半段有序
+            if(nums[left] < nums[mid]){
+                // target在左半段
+                if(nums[left] <= target && target < nums[mid]){
+                    right = mid - 1;
+                    // target在右半段
+                }else {
+                    left = mid + 1;
                 }
+            // left 和 mid 重合，直接跳过left
+            }else if(nums[left] == nums[mid]){
+                left++;
+            // 右半段有序
             }else{
-                //target在前半部分
-                if(nums[mid] > target && nums[start] <= target){
-                    end = mid - 1;
-                }else{
-                    start = mid + 1;
+                // target 在右半段
+                if(nums[mid] < target && target <= nums[right]){
+                    left = mid + 1;
+                    // target 在左半段
+                }else {
+                    right = mid - 1;
                 }
             }
         }
@@ -57,8 +77,7 @@ public class Solution33 {
     }
 
     public static void main(String[] args) {
-        int[] nums = {7,8,1,2,3,4,5,6};
         Solution33 solution33 = new Solution33();
-        System.out.println(solution33.search(nums, 4));
+        solution33.search(new int[]{3,1}, 1);
     }
 }
