@@ -13,28 +13,38 @@ public class Solution83 {
      * @return
      */
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null || head.next == null){
-            return head;
-        }
-        ListNode pre = head;
-        ListNode curr = pre.next;
+        if(head == null || head.next == null){return head;}
 
-
+        ListNode pre = head, curr = head.next;
         while (curr != null){
-            if(curr.val == pre.val){
+            while (curr != null && curr.val == pre.val){
                 curr = curr.next;
-            }else{
-                ListNode tmp = curr;
+            }
+            pre.next = curr;
+            pre = curr;
+            if(curr != null){
                 curr = curr.next;
-                pre.next = tmp;
-                pre = tmp;
             }
         }
-
-        pre.next = null;
         return head;
     }
 
+    /**
+     * 参考：https://leetcode.wang/leetCode-83-Remove-Duplicates-from-Sorted-List.html（解法二）
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates3(ListNode head) {
+        ListNode cur = head;
+        while (cur != null && cur.next != null){
+            if(cur.val == cur.next.val){
+                cur.next = cur.next.next;
+            }else{
+                cur = cur.next;
+            }
+        }
+        return head;
+    }
     /**
      * 解法二：递归
      * 参考：https://leetcode.wang/leetCode-83-Remove-Duplicates-from-Sorted-List.html#%E8%A7%A3%E6%B3%95%E4%B8%89-%E9%80%92%E5%BD%92

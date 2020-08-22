@@ -7,70 +7,76 @@ import java.util.HashMap;
  * 参考：https://leetcode.wang/leetcode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal.html
  */
 public class Solution105 {
+
     /**
      * 解法一：递归
+     * 时间复杂度：O(N^2)，这里 N 是二叉树的结点个数，每调用一次递归方法创建一个结点，一共创建 N 个结点，
+     *                  在中序遍历中找到根结点在中序遍历中的位置，是与 N 相关的，这里不计算递归方法占用的时间。
+     * 空间复杂度：O(1)，这里不计算递归方法占用的空间。
      * @param preorder
      * @param inorder
      * @return
      */
-    public TreeNode buildTree(int[] preorder, int[] inorder){
-        return buildTreeHelper(preorder, 0, preorder.length, inorder, 0, inorder.length);
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return helper(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
-    private TreeNode buildTreeHelper(int[] preorder, int p_start, int p_end, int[] inorder, int i_start, int i_end){
-        //递归终止条件：如果输入的前序序列为空，直接返回null（前序和中序长度一样）
-        if(p_start == p_end) return null;
+    private TreeNode helper(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd) {
+        // pStart 表示先序的第一位索引
+        // pEnd 表示先序的最后一位索引
+        // 如果输入的前序序列为空，返回 null
+        if(pEnd < pStart){return null;}
 
-        int root_val = preorder[p_start];
-        TreeNode root = new TreeNode(root_val);
+        int root = preorder[pStart];
+        TreeNode node = new TreeNode(root);
 
-        //在中序遍历中找根节点root
-        int i_root_index = 0;
-        for(int i = i_start; i < i_end; i++){
-            if(root_val == inorder[i]){
-                i_root_index = i;
+        // 在中序遍历中找root，即分隔点
+        int point = iStart;
+        for(; point <= iEnd; point++){
+            if(inorder[point] == root){
                 break;
             }
         }
+        // 左子树长度
+        int leftLen = point - iStart;
 
-        //左子树的长度
-        int leftNum = i_root_index - i_start;
-        root.left = buildTreeHelper(preorder, p_start + 1, p_start + leftNum + 1, inorder, i_start, i_root_index);
-        root.right = buildTreeHelper(preorder, p_start + leftNum + 1, p_end, inorder, i_root_index + 1, i_end);
-        return root;
+        node.left = helper(preorder, pStart + 1, pStart + leftLen, inorder, iStart, point - 1);
+        node.right = helper(preorder, pStart + leftLen + 1, pEnd, inorder, point + 1, iEnd);
+
+        return node;
     }
 
     /**
      * 解法二：解法一的优化
-     * 上一方法中每执行一次 buildTreeHelper 都要在中序中寻找根节点，
-     * 这里使用 HashMap 存储中序序列的索引与节点值，找根节点只需要 O(1)
+     * 上一方法中每执行一次 helper 都要在中序中寻找根节点，这里使用 HashMap 存储中序序列的索引与节点值，找根节点只需要 O(1)
+     *
      * @param preorder
      * @param inorder
      * @return
      */
-    public TreeNode buildTree2(int[] preorder, int[] inorder){
+    public TreeNode buildTree2(int[] preorder, int[] inorder) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < inorder.length; i++){
             map.put(inorder[i], i);
         }
-        return buildTreeHelper2(preorder, 0, preorder.length, inorder, 0, inorder.length, map);
+        return helper2(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, map);
     }
 
-    private TreeNode buildTreeHelper2(int[] preorder, int p_start, int p_end, int[] inorder, int i_start, int i_end, HashMap<Integer, Integer> map){
-        //递归终止条件：如果输入的前序序列为空，直接返回null（前序和中序长度一样）
-        if(p_start == p_end) return null;
+    private TreeNode helper2(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd, HashMap<Integer, Integer> map) {
+        if(pEnd < pStart){return null;}
 
-        int root_val = preorder[p_start];
-        TreeNode root = new TreeNode(root_val);
+        int root = preorder[pStart];
+        TreeNode node = new TreeNode(root);
 
-        //在中序遍历中找根节点root
-        int i_root_index = map.get(root_val);
+        // 使用map找分隔点
+        int point = map.get(root);
 
-        //左子树的长度
-        int leftNum = i_root_index - i_start;
-        root.left = buildTreeHelper2(preorder, p_start + 1, p_start + leftNum + 1, inorder, i_start, i_root_index, map);
-        root.right = buildTreeHelper2(preorder, p_start + leftNum + 1, p_end, inorder, i_root_index + 1, i_end, map);
-        return root;
+        int leftLen = point - iStart;
+
+        node.left = helper2(preorder, pStart + 1, pStart + leftLen, inorder, iStart, point - 1, map);
+        node.right = helper2(preorder, pStart + leftLen + 1, pEnd, inorder, point + 1, iEnd, map);
+
+        return node;
     }
 
     /**
