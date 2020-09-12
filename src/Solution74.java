@@ -14,35 +14,26 @@ public class Solution74 {
      * @return
      */
     public boolean searchMatrix(int[][] matrix, int target) {
-        // 行数
-        int row = matrix.length;
-        if(row == 0){
-            return false;
-        }
-        // 列数
-        int col = matrix[0].length;
+        if(matrix.length == 0 || matrix[0].length == 0){return false;}
+        int m = matrix.length;
+        int n = matrix[0].length;
 
-        int num = row * col;
-        int left = 0, right = num - 1;
+        int left = 0;
+        int right = m * n - 1;
         while (left <= right){
-            int mid = (left + right) / 2;
-            // 求mid对应的矩阵位置
-            int midRow = mid / col;
-            int midCol = mid % col;
-            if(matrix[midRow][midCol] == target){
+            int mid = left + (right - left) / 2;
+            int i = mid / n;
+            int j = mid % n;
+            int value = matrix[i][j];
+            if(target == value){
                 return true;
-            }else if(matrix[midRow][midCol] < target){
-                left = mid + 1;
-            }else{
+            }else if(target < value){
                 right = mid - 1;
+            }else{
+                left = mid + 1;
             }
         }
         return false;
     }
 
-    public static void main(String[] args) {
-        Solution74 solution74 = new Solution74();
-        int[][] matrix = {{1,1}};
-        solution74.searchMatrix(matrix, 2);
-    }
 }

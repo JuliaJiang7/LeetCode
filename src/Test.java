@@ -475,4 +475,259 @@ public class Test {
         return node;
     }
 
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0){return false;}
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int left = 0;
+        int right = m * n;
+        while (left <= right){
+            int mid = left + (right - left) / 2;
+            int i = mid / n;
+            int j = mid % n;
+            int value = matrix[i][j];
+            if(target == value){
+                return true;
+            }else if(target < value){
+                right = mid - 1;
+            }else{
+                left = mid + 1;
+            }
+        }
+        return false;
+    }
+
+
+
+    public int maxSubArray2(int[] nums) {
+        int len = nums.length;
+
+        // dp[i] = x 表示：以 nums[i] 结尾的子序列最大和
+        int[] dp = new int[len];
+        // base case
+        dp[0] = nums[0];
+
+        for(int i = 1; i < len; i++){
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+        }
+        int max = dp[0];
+        for(int j = 1; j < len; j++){
+            max = Math.max(max, dp[j]);
+        }
+
+        return max;
+    }
+
+    public boolean isValidBST(TreeNode root) {
+        if(root == null || (root.left == null && root.right == null)){
+            return true;
+        }
+
+        if(isValidBST(root.left)){
+            if(root.left != null){
+                int maxLeft = getMaxOfBST(root.left);
+                if(root.val <= maxLeft){
+                    return false;
+                }
+            }
+        }else{
+            return false;
+        }
+
+        if(isValidBST(root.right)){
+            if(root.right != null){
+                int minRight = getMinOfBST(root.right);
+                if(root.val >= minRight){
+                    return false;
+                }
+            }
+        }else{
+            return false;
+        }
+        return true;
+    }
+
+    private int getMinOfBST(TreeNode root) {
+        int min = root.val;
+        while (root.left != null){
+            min = root.left.val;
+            root = root.left;
+        }
+        return min;
+    }
+
+    private int getMaxOfBST(TreeNode root) {
+        int max = root.val;
+        while (root.right != null){
+            max = root.right.val;
+            root = root.right;
+        }
+        return max;
+    }
+
+
+    public boolean isValidBST2(TreeNode root) {
+        if(root == null || (root.left == null && root.right == null)){
+            return true;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+        TreeNode curr = root;
+        TreeNode pre = null;
+        while (!stack.isEmpty() || curr != null){
+            while (curr.left != null){
+                stack.push(curr.left);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            if(pre != null && curr.val <= pre.val){
+                return false;
+            }
+            pre = curr;
+            curr = curr.right;
+        }
+        return true;
+    }
+
+    /**
+     * 解法二：（递归）从根节点出发，来限制左右节点的取值范围（执行时间快）
+     * 实际使用树的 DFS，也就是二叉树的先序遍历，在遍历过程中判断当前值是否在取值区间内
+     * 参考：https://leetcode.wang/leetCode-98-Validate-Binary-Search-Tree.html
+     * @param root
+     * @return
+     */
+    public boolean isValidBST3(TreeNode root) {
+        // 节点值均为 Int 型，故最大值设为 long
+        long max = (long) Integer.MAX_VALUE + 1;
+        long min = (long) Integer.MIN_VALUE - 1;
+        return getAns(root, max, min);
+    }
+
+    private boolean getAns(TreeNode root, long max, long min) {
+        if(root == null){
+            return true;
+        }
+
+        if(root.val <= min || root.val >= max){
+            return false;
+        }
+
+        return getAns(root.left, min, root.val) && getAns(root.right, root.val, max);
+    }
+
+
+    public int minPathSum(int[][] grid) {
+        int row = grid.length;
+        if(row == 0){
+            return 0;
+        }
+        int col = grid[0].length;
+
+        int[][] dp = new int[row][col];
+        dp[0][0] = grid[0][0];
+        for(int j = 1; j < col; j++){
+            dp[0][j] = dp[0][j - 1] + grid[0][j];
+        }
+        for(int i = 1; i < row; i++){
+            dp[i][0] = dp[i - 1][0] + grid[i][0];
+        }
+
+        for(int i = 1; i < row; i++){
+            for(int j = 1; j < col; j++){
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+            }
+        }
+
+        return dp[row - 1][col - 1];
+    }
+
+    public static void main(String[] args) {
+        String str1 = new StringBuilder("计算机").append("软件").toString();
+        System.out.println(str1.intern() == str1);
+
+        String str2 = new StringBuilder("ju").append("lia").toString();
+        System.out.println(str2.intern() == str2);
+
+        String str3 = new StringBuilder("ju").append("lia").toString();
+        System.out.println(str3.intern() == str3);
+    }
+
+
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int len = inorder.length;
+        if(len == 0){return null;}
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < len; i++){
+            map.put(inorder[i], i);
+        }
+        return helper(inorder, 0, len, postorder, 0, len, map);
+    }
+
+    private TreeNode helper(int[] inorder, int iStart, int iEnd, int[] postorder, int pStart, int pEnd, Map<Integer, Integer> map) {
+        if(iStart == iEnd){return null;}
+        TreeNode root = new TreeNode(postorder[pEnd - 1]);
+
+        int rootIndex = map.get(postorder[pEnd - 1]);
+
+        int leftLen = rootIndex - iStart;
+        root.left = helper(inorder, iStart, rootIndex , postorder, pStart, pStart + leftLen, map);
+        root.right = helper(inorder, rootIndex + 1, iEnd, postorder, pStart + leftLen, pEnd - 1, map);
+        return root;
+    }
+
+    public int intervalSchedule(int[][] intvs) {
+        if(intvs.length == 0){return 0;}
+        // 按 end 排序
+        Arrays.sort(intvs, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] a, int[] b) {
+                return a[1] - b[1];
+            }
+        });
+
+        // 初始时，至少有一个区间不相交
+        int count = 1;
+        int end = intvs[0][1];
+
+        for(int i = 1; i < intvs.length; i++){
+            if(intvs[i][0] >= end){
+                count++;
+                end = intvs[i][1];
+            }
+        }
+
+        return count;
+    }
+
+    public int calculate(String s) {
+        int len = s.length();
+        int x = 1, y = 0;
+        for(int i = 0; i < len; i++){
+            char c = s.charAt(i);
+            if(c == 'A'){
+                x = 2 * x + y;
+            }
+            if(c == 'B'){
+                y = 2 * y + x;
+            }
+        }
+        return x+y;
+    }
+
+    public int breakfastNumber(int[] staple, int[] drinks, int x) {
+        int count = 0;
+        Arrays.sort(staple);
+        Arrays.sort(drinks);
+        for (int i = 0; i < staple.length && staple[i] < x; i++){
+            for(int j = 0; j < drinks.length && drinks[j] < x; j++){
+                if(staple[i] + drinks[j] <= x){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+        }
+        return count % 1000000008;
+    }
 }
